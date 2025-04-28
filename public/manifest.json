@@ -1,8 +1,7 @@
-
 {
-  "name": "DataWave Sensor",
-  "short_name": "DataWave",
-  "description": "ESP32 Sensor Monitoring App",
+  "name": "Panel de gestion de l'aquarium",
+  "short_name": "Aquarium",
+  "description": "Application de surveillance des capteurs ESP32",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f8f9fa",
