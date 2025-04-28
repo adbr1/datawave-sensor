@@ -52,7 +52,7 @@ const TemperatureChart = ({ data, className }: TemperatureChartProps) => {
             strokeWidth={2}
             dot={false}
             activeDot={{ r: 4 }}
-            isAnimationActive={false}
+            isAnimationActive={true}
           />
         </LineChart>
       </ResponsiveContainer>
