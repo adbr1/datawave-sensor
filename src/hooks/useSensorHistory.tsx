@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { SensorData } from '@/types/sensorTypes';
 
-interface HistoricalDataPoint {
+export interface HistoricalDataPoint {
   timestamp: Date;
   value: number;
 }

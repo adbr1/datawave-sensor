@@ -32,7 +32,7 @@ const Index = () => {
   } = useDeviceConnection();
 
   const isConnected = status === ConnectionStatus.CONNECTED;
-  const { history } = useSensorHistory(sensorData);
+  const sensorHistory = useSensorHistory(sensorData);
 
   // Essaie de se reconnecter automatiquement au démarrage si l'ESP n'est pas connecté
   useEffect(() => {
@@ -96,7 +96,7 @@ const Index = () => {
                 className={isMobile ? "col-span-1" : ""}
               >
                 <TemperatureChart 
-                  data={history.temperature}
+                  data={sensorHistory.temperature}
                   className="mt-4"
                 />
               </TemperatureDisplay>
@@ -107,7 +107,7 @@ const Index = () => {
                 className={isMobile ? "col-span-1" : ""}
               >
                 <TurbidityChart 
-                  data={history.turbidity}
+                  data={sensorHistory.turbidity}
                   className="mt-4"
                 />
               </TurbidityDisplay>

@@ -3,17 +3,20 @@ import { Thermometer } from "lucide-react";
 import SensorCard from "./SensorCard";
 import { cn } from "@/lib/utils";
 import { useSettings } from "@/contexts/SettingsContext";
+import { ReactNode } from "react";
 
 interface TemperatureDisplayProps {
   temperature: number;
   className?: string;
   animationDelay?: string;
+  children?: ReactNode;
 }
 
 const TemperatureDisplay = ({ 
   temperature, 
   className,
-  animationDelay = 'animation-delay-100'
+  animationDelay = 'animation-delay-100',
+  children
 }: TemperatureDisplayProps) => {
   const { settings } = useSettings();
   
@@ -86,6 +89,7 @@ const TemperatureDisplay = ({
           </div>
         )}
       </div>
+      {children}
     </SensorCard>
   );
 };

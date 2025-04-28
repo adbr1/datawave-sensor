@@ -3,17 +3,20 @@ import { Waves } from "lucide-react";
 import SensorCard from "./SensorCard";
 import { cn } from "@/lib/utils";
 import { useSettings } from "@/contexts/SettingsContext";
+import { ReactNode } from "react";
 
 interface TurbidityDisplayProps {
   turbidity: number;
   className?: string;
   animationDelay?: string;
+  children?: ReactNode;
 }
 
 const TurbidityDisplay = ({ 
   turbidity, 
   className,
-  animationDelay = 'animation-delay-200'
+  animationDelay = 'animation-delay-200',
+  children
 }: TurbidityDisplayProps) => {
   const { settings } = useSettings();
   
@@ -74,6 +77,7 @@ const TurbidityDisplay = ({
           </div>
         )}
       </div>
+      {children}
     </SensorCard>
   );
 };
