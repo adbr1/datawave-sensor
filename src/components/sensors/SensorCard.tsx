@@ -10,7 +10,6 @@ interface SensorCardProps {
   withAnimation?: boolean;
   animationDelay?: string;
   alert?: boolean;
-  onClick?: () => void;
 }
 
 const SensorCard = ({ 
@@ -20,12 +19,10 @@ const SensorCard = ({
   className, 
   withAnimation = true,
   animationDelay = 'animation-delay-0',
-  alert = false,
-  onClick
+  alert = false
 }: SensorCardProps) => {
   return (
     <div 
-      onClick={onClick}
       className={cn(
         "sensor-card flex flex-col p-4 rounded-lg border",
         "bg-white",
@@ -55,4 +52,3 @@ const SensorCard = ({
 };
 
 export default SensorCard;
-

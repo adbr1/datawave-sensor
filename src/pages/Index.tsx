@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MainLayout from "@/components/layout/MainLayout";
@@ -12,9 +13,6 @@ import { ConnectionStatus } from "@/types/sensorTypes";
 import { Button } from "@/components/ui/button";
 import { RefreshCw } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useSensorHistory } from "@/hooks/useSensorHistory";
-import TemperatureChart from "@/components/sensors/TemperatureChart";
-import TurbidityChart from "@/components/sensors/TurbidityChart";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -32,7 +30,6 @@ const Index = () => {
   } = useDeviceConnection();
 
   const isConnected = status === ConnectionStatus.CONNECTED;
-  const sensorHistory = useSensorHistory(sensorData);
 
   // Essaie de se reconnecter automatiquement au démarrage si l'ESP n'est pas connecté
   useEffect(() => {
@@ -94,24 +91,12 @@ const Index = () => {
                 temperature={sensorData.temperature} 
                 animationDelay="animation-delay-100"
                 className={isMobile ? "col-span-1" : ""}
-              >
-                <TemperatureChart 
-                  data={sensorHistory.temperature}
-                  className="mt-4"
-                />
-              </TemperatureDisplay>
-              
+              />
               <TurbidityDisplay 
                 turbidity={sensorData.turbidity} 
                 animationDelay="animation-delay-200"
                 className={isMobile ? "col-span-1" : ""}
-              >
-                <TurbidityChart 
-                  data={sensorHistory.turbidity}
-                  className="mt-4"
-                />
-              </TurbidityDisplay>
-              
+              />
               <LampStatus 
                 isOn={sensorData.lampStatus} 
                 onToggle={toggleLamp} 
