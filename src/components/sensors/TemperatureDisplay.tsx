@@ -1,9 +1,8 @@
-
 import { Thermometer } from "lucide-react";
 import SensorCard from "./SensorCard";
 import { cn } from "@/lib/utils";
 import { useSettings } from "@/contexts/SettingsContext";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 interface TemperatureDisplayProps {
   temperature: number;
@@ -19,6 +18,7 @@ const TemperatureDisplay = ({
   children
 }: TemperatureDisplayProps) => {
   const { settings } = useSettings();
+  const [showChart, setShowChart] = useState(false);
   
   // Convertir la température si nécessaire
   const displayTemp = settings.temperatureUnit === "fahrenheit" 
@@ -61,9 +61,10 @@ const TemperatureDisplay = ({
     <SensorCard 
       title="Température" 
       icon={<Thermometer className="h-4 w-4" />}
-      className={className}
+      className={cn(className, "cursor-pointer")}
       animationDelay={animationDelay}
       alert={isAlertActive}
+      onClick={() => setShowChart(!showChart)}
     >
       <div className="flex flex-col items-center justify-center">
         <span className={cn(
@@ -88,8 +89,8 @@ const TemperatureDisplay = ({
             </div>
           </div>
         )}
+        {showChart && children}
       </div>
-      {children}
     </SensorCard>
   );
 };

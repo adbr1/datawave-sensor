@@ -1,9 +1,8 @@
-
 import { Waves } from "lucide-react";
 import SensorCard from "./SensorCard";
 import { cn } from "@/lib/utils";
 import { useSettings } from "@/contexts/SettingsContext";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 interface TurbidityDisplayProps {
   turbidity: number;
@@ -19,6 +18,7 @@ const TurbidityDisplay = ({
   children
 }: TurbidityDisplayProps) => {
   const { settings } = useSettings();
+  const [showChart, setShowChart] = useState(false);
   
   // Determine color based on turbidity range (in NTU)
   const getTurbidityColor = (turb: number): string => {
@@ -50,9 +50,10 @@ const TurbidityDisplay = ({
     <SensorCard 
       title="Turbidité" 
       icon={<Waves className="h-4 w-4" />}
-      className={className}
+      className={cn(className, "cursor-pointer")}
       animationDelay={animationDelay}
       alert={isAlertActive}
+      onClick={() => setShowChart(!showChart)}
     >
       <div className="flex flex-col items-center justify-center">
         <span className={cn(
@@ -76,8 +77,8 @@ const TurbidityDisplay = ({
             </div>
           </div>
         )}
+        {showChart && children}
       </div>
-      {children}
     </SensorCard>
   );
 };
