@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -13,7 +12,7 @@ interface HeaderProps {
   className?: string;
 }
 
-const Header = ({ title, className }: HeaderProps) => {
+const Header = ({ title = "Panel de gestion de l'aquarium", className }: HeaderProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();

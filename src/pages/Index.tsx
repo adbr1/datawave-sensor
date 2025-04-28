@@ -61,7 +61,7 @@ const Index = () => {
         <div className="flex flex-col space-y-4 md:space-y-8 animate-fade-in">
           <section className="text-center max-w-3xl mx-auto px-2">
             <h1 className={`font-light tracking-tight mb-2 ${isMobile ? 'text-2xl' : 'text-4xl'}`}>
-              Tableau de bord DataWave
+              Panel de gestion de l&apos;aquarium
             </h1>
             <p className="text-muted-foreground mb-4 text-sm md:text-base">
               Surveillance en temps réel de vos capteurs aquatiques ESP32

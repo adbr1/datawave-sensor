@@ -12,7 +12,7 @@ interface MainLayoutProps {
 
 const MainLayout = ({ 
   children, 
-  title = "DataWave Sensor", 
+  title = "Panel de gestion de l'aquarium", 
   className 
 }: MainLayoutProps) => {
   const isMobile = useIsMobile();
